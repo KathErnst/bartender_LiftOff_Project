@@ -46,7 +46,6 @@ public class CommentController {
                 return "error";
             }
 
-
             newComment.setDateAdded(LocalDate.now());
             newComment.setUserName(user);
             newComment.setContents(commentContents);
@@ -56,7 +55,6 @@ public class CommentController {
             commentRepository.save(newComment);
 
             return "redirect:/cocktails/recipe?recipeId=" + recipeId;
-
         }
 
             catch (Exception e) {
@@ -66,11 +64,29 @@ public class CommentController {
                 return "error";
                 }
 
-
-
-
-
     }
+
+    @GetMapping("/cocktails/recipe/comment/edit")
+//    public String renderEditCommentForm(@RequestParam Integer commentId,
+//                                        @ModelAttribute Comment oldComment,
+//                                        HttpServletRequest request, Model model) {
+//        HttpSession session = request.getSession();
+//        User user = authenticationController.getUserFromSession(session);
+//        Optional<Comment> result = commentRepository.findById(commentId);
+//
+//        if (user == null) {
+//            model.addAttribute("errorMessage", "User not found");
+//            return "error";
+//        }
+// Get comment contents in a text box that can be edited
+    public String renderEditCommentForm (@RequestParam Integer commentId,
+                                         Model model) {
+        Optional<Comment> oldComment = commentRepository.findById(commentId);
+        String commentTextToEdit = oldComment.get().getContents();
+        model.addAttribute(commentTextToEdit);
+        return "/cocktails/editComment";
+    }
+
 
 
 

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns:input="http://www.w3.org/1999/html">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<body>
+<form method = "POST" action = "/cocktails/editComment">
+    <input type="textarea" th:text="{commentTextToEdit}"></inputtextarea>
+    <input type="submit" value="Update Comment">
+</form>
+
+</body>
+</html>

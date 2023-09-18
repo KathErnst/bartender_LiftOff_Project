@@ -1,3 +1,6 @@
+<!--TODO: Add CRUD functionality to Comments-->
+<!--TODO: Improve CSS on the worst pages-->
+<!--TODO: Make WCAG compliant -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
@@ -7,7 +10,6 @@
 
 <p id="recipe-text" th:text="${recipeText}">Recipe Text</p>
 
-<!--Adding Comment Feature:-->
 <style>
     table {
         border-collapse: collapse;
@@ -30,13 +32,14 @@
         <td th:text="${comment.dateAdded}">Date Added</td>
         <td th:text="${comment.userName.username}">Written By</td>
         <td th:text="${comment.contents}">Comment Contents</td>
+        <td><a class="btn btn-info maroonButton" href="@{/cocktails/editComment}">Edit Comment</a></td>
     </tr>
 </table>
 
 <div th:if="${comments.size() == 0}">No comments so far.</div>
 
 <div id="addCommentButton">
-    <button >Add Comment</button>
+    <button class="btn btn-info maroonButton">Add Comment</button>
 </div>
 
 <div id="commentPopup" style="display: none;">
