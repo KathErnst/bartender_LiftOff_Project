@@ -1,6 +1,4 @@
-<!--TODO: Add CRUD functionality to Comments-->
-<!--TODO: Improve CSS on the worst pages-->
-<!--TODO: Make WCAG compliant -->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
@@ -25,14 +23,18 @@
         <th>Date Added</th>
         <th>Written By</th>
         <th>Comment</th>
+        <th>Edit</th>
     </tr>
     </thead>
-
+    <br>
     <tr th:each="comment : ${comments}">
         <td th:text="${comment.dateAdded}">Date Added</td>
         <td th:text="${comment.userName.username}">Written By</td>
         <td th:text="${comment.contents}">Comment Contents</td>
-        <td><a class="btn btn-info maroonButton" href="@{/cocktails/editComment}">Edit Comment</a></td>
+        <td><a th:href="@{/cocktails/editComment}">
+            <button class="btn btn-info maroonButton">Edit Comment</button>
+        </a></td>
+
     </tr>
 </table>
 
